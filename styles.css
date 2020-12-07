@@ -1,0 +1,23 @@
+body {
+    background-color: cyan;
+    font-family: Arial;
+    color: black;
+    text-align: justify;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: grey;
+}
+
+canvas {
+    color: chocolate;
+    border: aqua dot-dot-dash 2px;
+    padding: 15px;
+}
+
+h1 {
+    font-size: 2em;
+}

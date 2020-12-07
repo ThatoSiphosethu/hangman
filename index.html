@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div class="wrapper">
+        <h1>HANGMAN</h1>
+        <p>Click on the alphabets to guess the word or hint for clue. Click "Reset"
+        to play again.</p>
+    </div>
+
+    <div class="wrapper">
+       <div id="buttons"></div>
+        <p id="category"></p>
+
+        <div id="hold"></div>
+        <p id="lives"></p>
+        <p id="clue">Clue</p>
+        <canvas id="screen"></canvas>
+
+    </div>
+
+    <div class="wrapper">
+        <button id="play" onclick="words()">Play</button>
+        <button id="reset">Reset</button>
+
+    </div>
+<script>
+
+
+    //choosen word
+    var words = ['Arizona', 'Alabama', 'Alaska', 'Arkansas', 'Colorado', 'Connecticut', 'Delaware', 'California', 'Florida', 'Georgia',
+        'Hawaii', 'Idaho', 'Iowa', 'Kansas', 'Kentucky'];
+
+
+    //select random state from word
+    var word = words[Math.floor(Math.random()*words.length)];
+
+
+
+    //create dashes
+    var dashes = [];
+    for (var i = 0; i < word.length; i++) {
+        dashes[i] = "_";
+    }
+
+    var remainingLetters = word.length;
+
+    var attempt = 6;
+
+    // The game loop
+    while (remainingLetters > 0 && attempt != 0 ) {
+        // Show the player their progress
+        alert(dashes.join(" "));
+
+
+        // Get a guess from the player
+        var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+        if (guess === null) {
+            // Exit the game loop
+            break;
+        } else if (guess.length !== 1) {
+            alert("Please enter a single letter.");
+        } else {
+            // Update the game state with the guess
+            for (var j = 0; j < word.length; j++) {
+                if (word[j] === guess) {
+                    dashes[j] = guess;
+                    remainingLetters--;
+                }
+            }
+        }
+    }
+    alert(dashes.join(" "));
+</script>
+</body>
+</html>
